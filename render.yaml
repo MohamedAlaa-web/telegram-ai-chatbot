@@ -1,0 +1,18 @@
+## Render Deployment Configuration
+
+  # This file is used for deploying the Telegram AI Chatbot to Render.
+
+services:
+  - type: web
+    name: telegram-ai-chatbot
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: python -m pip install -r requirements.txt
+    startCommand: python app.py
+    workDirectory: /
+    healthCheckPath: /health
+    autoDeploy: true
+    setup:
+      - command: python -m pip install -r requirements.txt
+        isAsync: false
