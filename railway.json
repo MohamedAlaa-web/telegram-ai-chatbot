@@ -1,9 +1,0 @@
-{
-  "build": {
-    "builder": "railpack",
-    "buildCommand": "pip install -r requirements.txt"
-  },
-  "deploy": {
-    "startCommand": "python bot.py"
-  }
-}
