@@ -10,6 +10,8 @@ A powerful Telegram chatbot powered by **Google Gemini 1.5 Flash** with an autom
 - **📄 PDF Support**: Upload PDF documents, and the bot will summarize the content for you.
 - **🎤 Voice Support**: Send voice messages, and the bot will transcribe and respond to them.
 - **🎬 Video Support**: Send regular videos or circular video notes, and the bot will analyze and respond to them.
+- **🎧 AI Voice Synthesis**: Powered by **ElevenLabs**, the bot can respond with high-quality audio messages.
+- **🛡️ AI Fallback Chain**: High-availability system switching between **Gemini**, **Groq (Llama-3)**, **OpenAI (GPT-4o)**, and **Hugging Face**.
 - **📜 Chat History**: Maintains context for a more natural conversation experience.
 - **🚀 Deploy Ready**: Pre-configured for deployment on **Render**.
 
@@ -51,5 +53,7 @@ python bot.py
 - `/start` - Start the bot.
 - `/help` - Show the help manual.
 - `/clear` - Clear your chat history.
+- `/voice_on` - Enable AI voice responses (ElevenLabs).
+- `/voice_off` - Disable AI voice responses (Text only).
 - `/transcribe_last` - Show the transcript of your last voice message.
 - `/transcribe_video` - Show the analysis of your last video.
