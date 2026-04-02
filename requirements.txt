@@ -7,4 +7,3 @@ requests==2.31.0
 groq==0.4.2
 openai==1.14.3
 elevenlabs==0.2.27
-replicate==0.25.1
