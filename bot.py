@@ -1,7 +1,6 @@
 import os
 import logging
 import time
-import asyncio
 from io import BytesIO
 from dotenv import load_dotenv
 import PyPDF2
@@ -229,6 +228,9 @@ async def handle_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.chat.send_action("typing")
+    if not gemini_model:
+        await update.message.reply_text("⚠️ تحليل الصور غير متاح. يرجى إعداد GEMINI_API_KEY.")
+        return
     try:
         photo_file = await update.message.photo[-1].get_file()
         photo_bytes = await photo_file.download_as_bytearray()
@@ -252,6 +254,9 @@ async def handle_document(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.chat.send_action("typing")
+    if not gemini_model:
+        await update.message.reply_text("⚠️ معالجة الصوت غير متاحة. يرجى إعداد GEMINI_API_KEY.")
+        return
     try:
         voice = await update.message.voice.get_file()
         voice_data = await voice.download_as_bytearray()
@@ -275,6 +280,9 @@ async def handle_voice(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def handle_video(update: Update, context: ContextTypes.DEFAULT_TYPE):
     video = update.message.video or update.message.video_note
     if not video: return
+    if not gemini_model:
+        await update.message.reply_text("⚠️ تحليل الفيديو غير متاح. يرجى إعداد GEMINI_API_KEY.")
+        return
     status_msg = await update.message.reply_text("🎬 جاري تحليل الفيديو (قد يستغرق لحظات)...")
     path = f"temp_{int(time.time())}.mp4"
     try:
