@@ -1,7 +1,6 @@
 import os
 import logging
 import time
-import asyncio
 from io import BytesIO
 from dotenv import load_dotenv
 import PyPDF2
